@@ -81,5 +81,28 @@ volumes:
 - postgres:5432
 - db:5432
 
-If multiple answers are correct, select any 
+#### Solution
+we copied the above code block and created a docker-compose.yaml file with it in our project repository and run the command below in our bash terminal from within our project root folder where the docker-compose.yaml file is housed:  
+```bash
+docker compose up -d
+``` 
+
+This uses our docker-compose.yaml file to sets up a dockerize local database environment with two services: PostgreSQL and pgAdmin.  
+
+The pgadmin service (database management tool) Provides a web-based interface to manage our PostgreSQL database which we can access at http://localhost:8080 from our browser!   
+
+Using Login credentials as defined in our docker-compose.yaml file
+* email: pgadmin@pgadmin.com,
+* password: pgadmin  
+
+
+we were then able to Connect to our postgres database from pgAdmin (the web interface at localhost:8080), using the parameters:
+
+* Host: db (not localhost or 127.0.0.1, because pgAdmin is inside Docker)  
+
+* Port: 5432 (not 5433, because inside Docker it uses the internal port)  
+
+* Username: postgres  
+
+* Password: postgres  
 
