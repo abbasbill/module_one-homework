@@ -32,12 +32,12 @@ This is useful for debugging, testing, or exploring what's inside a Python conta
 - 23.3.1
   #### Solution
   To check the pip version, we run:
-  ```bash
+```bash
   pip --version
-  ```
-  This output - 25.3 as the pip version as seen in the image below
+```
+This output - 25.3 as the pip version as seen in the image below
   
-  <img width="689" height="354" alt="image" src="https://github.com/user-attachments/assets/6c4b7460-5255-4274-98cd-72def1c42040" />
+<img width="689" height="354" alt="image" src="https://github.com/user-attachments/assets/6c4b7460-5255-4274-98cd-72def1c42040" />
 
 ## Question 2. Understanding Docker networking and docker-compose
 
@@ -106,3 +106,46 @@ we were then able to Connect to our postgres database from pgAdmin (the web inte
 
 * Password: postgres  
 
+
+## Question 3. Counting short trips
+
+For the trips in November 2025 (lpep_pickup_datetime between '2025-11-01' and '2025-12-01', exclusive of the upper bound), how many trips had a `trip_distance` of less than or equal to 1 mile?
+
+- 7,853
+- 8,007
+- 8,254
+- 8,421
+
+### Solution
+By qurying our database with the query below, the number of trips in November 2025 between '2025-11-01' and '2025-12-01', exclusive of the upper bound that had a trip distance less than or equal to 1 mile is `8,007`
+```sql
+SELECT COUNT(1) as trip_distance_less_than_one_mile
+FROM public."green_tripdata_2025-11"
+WHERE lpep_pickup_datetime >= '2025-11-01' 
+AND lpep_pickup_datetime < '2025-12-01'
+AND trip_distance <= 1;
+```
+* This returns 8,007
+
+## Question 4. Longest trip for each day
+
+Which was the pick up day with the longest trip distance? Only consider trips with `trip_distance` less than 100 miles (to exclude data errors).
+
+Use the pick up time for your calculations.
+
+- 2025-11-14
+- 2025-11-20
+- 2025-11-23
+- 2025-11-25
+### Solution
+We determine the pick up day with the longest trip distance? Only considering trips with trip_distance less than 100 miles (to exclude data errors) with the query:  
+```sql
+SELECT
+    DATE(lpep_pickup_datetime) as pickup_day_of_max_trip_distance,
+	trip_distance
+FROM public."green_tripdata_2025-11"
+WHERE trip_distance < 100
+ORDER BY trip_distance DESC
+LIMIT 1;
+```
+* This returns `2025-11-14` as the date of the day with the longest trip distance (only considering the dataset with less than 100 miles trip_distance to account for data errors)
