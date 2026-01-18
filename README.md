@@ -126,6 +126,7 @@ AND lpep_pickup_datetime < '2025-12-01'
 AND trip_distance <= 1;
 ```
 * This returns 8,007
+<img width="517" height="498" alt="queryii" src="https://github.com/user-attachments/assets/5ba415ba-389b-4087-a69a-6debe13a24c2" />
 
 ## Question 4. Longest trip for each day
 
@@ -148,4 +149,32 @@ WHERE trip_distance < 100
 ORDER BY trip_distance DESC
 LIMIT 1;
 ```
-* This returns `2025-11-14` as the date of the day with the longest trip distance (only considering the dataset with less than 100 miles trip_distance to account for data errors)
+* This returns `2025-11-14` as the date of the day with the longest trip distance being 88.03 miles (only considering the dataset with less than 100 miles trip_distance to account for data errors)
+<img width="707" height="471" alt="quryiii" src="https://github.com/user-attachments/assets/079a9a84-4865-4776-b8d5-426d0ff52b6c" />
+
+## Question 5. Biggest pickup zone
+
+Which was the pickup zone with the largest `total_amount` (sum of all trips) on November 18th, 2025?
+
+- East Harlem North
+- East Harlem South
+- Morningside Heights
+- Forest Hills
+
+### Solution
+The pickup zone with the largest `total_amount` (sum of all trips) on November 18th, 2025 is:  
+- `East Harlem North` having `434` trips!
+<img width="636" height="504" alt="query_v" src="https://github.com/user-attachments/assets/368913d5-63cc-4867-9b70-698d91f92693" />
+
+## Question 6. Largest tip
+
+For the passengers picked up in the zone named "East Harlem North" in November 2025, which was the drop off zone that had the largest tip?
+- JFK Airport
+- Yorkville West
+- East Harlem North
+- LaGuardia Airport
+
+### Solution
+The passengers picked up in the zone named "East Harlem North" in November 2025, with the drop off zone that had the largest tip is:
+- `Yorkville West` having total tip of `81.89`
+<img width="611" height="612" alt="image" src="https://github.com/user-attachments/assets/2ac305b2-3b7f-4677-8809-fb892fe86f5c" />
