@@ -83,9 +83,9 @@ def ingest_data(file_path, table_name, db_url, chunksize=100000):
                 chunk.to_sql(name=table_name, con=engine, if_exists='append', index=False)
                 rows_inserted += len(chunk)
             
-            print(f"✓ Successfully inserted {rows_inserted} rows in total")
+            print(f"Successfully inserted {rows_inserted} rows in total")
         
-        print(f"✓ Data ingestion complete!")
+        print(f"Data ingestion complete!")
         
     except Exception as e:
         print(f"Error during ingestion: {e}", file=sys.stderr)
