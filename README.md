@@ -178,3 +178,24 @@ For the passengers picked up in the zone named "East Harlem North" in November 2
 The passengers picked up in the zone named "East Harlem North" in November 2025, with the drop off zone that had the largest tip is:
 - `Yorkville West` having total tip of `81.89`
 <img width="611" height="612" alt="image" src="https://github.com/user-attachments/assets/2ac305b2-3b7f-4677-8809-fb892fe86f5c" />
+
+## Question 7. Terraform Workflow
+Which of the following sequences, respectively, describes the workflow for:
+1. Downloading the provider plugins and setting up backend,
+2. Generating proposed changes and auto-executing the plan
+3. Remove all resources managed by terraform
+
+Answers:
+- terraform import, terraform apply -y, terraform destroy
+- teraform init, terraform plan -auto-apply, terraform rm
+- terraform init, terraform run -auto-approve, terraform destroy
+- terraform init, terraform apply -auto-approve, terraform destroy
+- terraform import, terraform apply -y, terraform rm
+
+### Solution
+The sequence of operation that respectively describes the workflow for:
+1. Downloading the provider plugins and setting up backend,
+2. Generating proposed changes and auto-executing the plan
+3. Remove all resources managed by terraform is:
+   
+-> terraform init, terraform apply -auto-approve, terraform destroy
